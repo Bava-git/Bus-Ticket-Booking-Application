@@ -1,0 +1,127 @@
+.formcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.formelements {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0px 5px 10px 0px black;
+}
+
+.formelements-field {
+    width: 30vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+}
+
+.formelements-field button {
+    background-color: #1F75FE;
+    color: white;
+}
+
+.formelements-field-bus {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+}
+
+.form-border {
+    border: 1px solid rgba(140, 132, 132, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.form-submitBn {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #5e9bfc;
+    }
+}
+
+.form-title {
+    padding: 10px;
+    margin: 10px;
+}
+
+.form-radio {
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.form-span {
+    margin-right: 5px;
+    font-size: 15px;
+}
+
+.form-lower {
+    border: 1px solid rgba(140, 132, 132, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-lower select {
+    padding: 10px;
+    margin: 10px;
+}
+
+.form-lower-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 93%;
+    /* border: 1px solid rgba(140, 132, 132, 0.5); */
+    padding: 0px 10px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.form-lower-title select {
+    padding: 5px;
+    margin: 5px;
+}
+
+.form-side {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.formelements-amenities {
+    padding: 10px;
+    margin: 10px;
+}
+
+.formelements-amenities input {
+    margin-right: 10px;
+    width: 15px;
+    cursor: pointer;
+}
+
+.formelements-checkboxs {
+    display: flex;
+}

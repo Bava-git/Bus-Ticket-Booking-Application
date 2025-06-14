@@ -1,0 +1,302 @@
+.resultpage {
+    display: flex;
+    min-height: 100dvh;
+    margin-top: 50px;
+}
+
+
+.resultpage-filter {
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    height: max-content;
+}
+
+.filter-field {
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+}
+
+.filter-field input {
+    margin: 0px 10px;
+    width: 15px;
+    cursor: pointer;
+}
+
+.resultpage-results {
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    height: max-content;
+}
+
+.resultpage-perbus {
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0px 5px 10px 0px black;
+    width: 70vw;
+}
+
+.busdetails {
+    display: flex;
+    justify-content: space-between;
+}
+
+.busname {
+    font-size: 20px;
+
+}
+
+.busamenities {
+    font-size: 15px;
+}
+
+.busBnDiv {
+    display: flex;
+    justify-content: end;
+    padding: 5px;
+    margin: 5px;
+}
+
+.busBn-view {
+    padding: 12px;
+    margin: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #1E90FF;
+    color: white;
+    font-weight: bold;
+
+    &:hover {
+        background-color: #00BFFF;
+    }
+}
+
+.lowerdeck {
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    /* height: 49em; */
+    justify-content: flex-end;
+}
+
+.upperdeck {
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    height: 49em;
+}
+
+.lowerdeck-seats {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.lowerdeck-rightside {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.steering-icon {
+    width: 35px;
+    height: 35px;
+}
+
+.seatsbn {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.perseat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.perseatprice {
+    font-size: 12px;
+}
+
+.bothseat {
+    display: flex;
+}
+
+.lowerdeck-field-title {
+    padding: 5px;
+    margin: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 12em;
+}
+
+.selector {
+    /* border: 1px solid black; */
+    position: relative;
+    display: inline-block;
+    font-size: 17px;
+    width: max-content;
+    height: max-content;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.blockedseats {
+    position: relative;
+    display: inline-block;
+    font-size: 17px;
+    width: max-content;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.selector input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.sleeper-icon {
+    width: 43px;
+    height: 95.6px;
+}
+
+.seater-icon {
+    width: 33px;
+    height: 34.4px;
+}
+
+.viewseats {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10dvh;
+    left: 2dvw;
+    background-color: #E1EBEE;
+    padding: 20px;
+    margin: 20px;
+    width: 90dvw;
+    box-shadow: 0px 5px 10px 0px black;
+    border-radius: 10px;
+}
+
+.busdetails-payment {
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: 50%;
+}
+
+.busdetails-payment p {
+    margin: 5px 0;
+}
+
+.viewseats-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.deck {
+    display: flex;
+    justify-content: center;
+}
+
+.closebn {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.othercontent-field {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.othercontent-busdetails {
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 25px;
+}
+
+.bookticketBn {
+    padding: 12px;
+    margin: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #1E90FF;
+    color: white;
+    font-weight: bold;
+
+    &:hover {
+        background-color: #00BFFF;
+    }
+}
+
+.expirydate input {
+    width: 40px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.othercontent-title {
+    margin: 200px;
+}
+
+.ccv input {
+    width: 40px;
+    text-align: center;
+}
+
+.othercontent-field-paymenttype input {
+    margin: 10px;
+    cursor: pointer;
+}
+
+.resultpage-filter-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-title-clearbn {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+        color: blue;
+        background-color: #00BFFF;
+    }
+}
+
+.busdetails {
+    margin: 10px;
+    padding: 10px;
+}

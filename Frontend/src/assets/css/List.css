@@ -1,0 +1,52 @@
+.listcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.listcontainer-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    margin: 10px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0px 5px 10px 0px black;
+    width: 90vw;
+}
+
+.listcontainer-table th {
+    max-width: 100px;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.listcontainer-table tr:hover {
+    background-color: #87CEEB;
+}
+
+.listcontainer-table-title {
+    padding: 10px;
+    margin: 10px;
+}
+
+.listcontainer-table-Bns {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #1E90FF;
+    color: white;
+    font-weight: bold;
+
+    &:hover {
+        background-color: #00BFFF;
+    }
+}
+
+.error-massage {
+    font-size: 25px;
+}
