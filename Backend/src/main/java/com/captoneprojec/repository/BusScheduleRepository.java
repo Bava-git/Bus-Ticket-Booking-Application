@@ -4,6 +4,8 @@ import com.captoneprojec.entity.BusSchedule;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -17,4 +19,5 @@ public interface BusScheduleRepository extends JpaRepository<BusSchedule, Long> 
     int deleteByBookingInfoId(String bookingInfoId);
 
     int deleteAllByBusId(String busId);
+
 }

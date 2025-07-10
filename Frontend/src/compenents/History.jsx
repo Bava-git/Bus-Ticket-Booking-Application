@@ -5,7 +5,7 @@ import { listItem } from '../util/API_HUB';
 const History = () => {
 
     const [PassengerHistory, setPassengerHistory] = useState([]);
-    let token = localStorage.getItem("token") || "";
+    let token = sessionStorage.getItem("token") || "";
     const decoded = jwtDecode(token);
     let passenger_id = decoded.userId;
 

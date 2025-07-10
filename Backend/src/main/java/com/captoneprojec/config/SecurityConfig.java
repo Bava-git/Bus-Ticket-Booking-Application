@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/user/register", "/user/login", "/passenger/add",
-                                "/routes", "/passenger/id/**", "/busbookinginfo", "/bus", "/bookinginfo").permitAll()
+                                "/routes", "/passenger/id/**", "/busbookinginfo", "/bus", "/bookinginfo", "bookinginfo/getroutes").permitAll()
                         .requestMatchers("/passengerbookingInfo",
                                 "/busbookinginfo/add", "/passengerbookingInfo/add",
                                 "/busbookinginfo/add/all", "/passengerbookingInfo/add/all","/passenger/update/**").hasAnyAuthority("ROLE_PASSENGER", "ROLE_ADMIN")

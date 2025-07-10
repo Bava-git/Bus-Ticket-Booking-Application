@@ -5,7 +5,9 @@ import com.captoneprojec.repository.BusScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BusScheduleService {
@@ -39,5 +41,15 @@ public class BusScheduleService {
 
     public int deleteAllByBusId(String busId) {
         return bookingInfoRepository.deleteAllByBusId(busId);
+    }
+
+    public List<BusSchedule> findByRouteInfoIdandboardingDateTime(String routeInfoId, LocalDateTime boardingDateTime) {
+        List<BusSchedule> busScheduleList = bookingInfoRepository.findAll();
+        List<BusSchedule> filteredBusScheduleList = busScheduleList.stream().filter(item -> (
+                item.getRouteInfoId().equals(routeInfoId)
+//                        && item.getBoardingDateTime().equals(boardingDateTime)
+                        && item.getBoardingDateTime().toLocalDate().equals(boardingDateTime.toLocalDate())
+        )).collect(Collectors.toList());
+        return filteredBusScheduleList;
     }
 }

@@ -9,7 +9,7 @@ const Profile = () => {
 
     const Navigate = useNavigate();
     const [Passenger, setPassenger] = useState('');
-    let token = localStorage.getItem("token") || "";
+    let token = sessionStorage.getItem("token") || "";
     const decoded = jwtDecode(token);
     let passenger_id = decoded.userId;
 
@@ -97,7 +97,7 @@ const ChangePassword = () => {
             let response = await axios.post("http://localhost:3000/user/changepassword", registerData, {
                 headers: {
                     "Content-type": "Application/json",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                    Authorization: `Bearer ${sessionStorage.getItem("token")}`
                 }
             })
             if (response.status === 200) {

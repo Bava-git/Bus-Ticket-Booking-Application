@@ -28,7 +28,7 @@ const HomePage = () => {
             let response = await axios.get(`http://localhost:3000/routes`, {
                 headers: {
                     "Content-type": "Application/json",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                    Authorization: `Bearer ${sessionStorage.getItem("token")}`
                 }
             })
             setListItem(response.data)

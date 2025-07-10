@@ -15,8 +15,8 @@ const RegisterNewPassenger = async (NewPassengerData) => {
         if (response.status === 201) {
             const token = await response.data.token;
             const decoded = jwtDecode(token);
-            localStorage.setItem("token", token);
-            localStorage.setItem("role", decoded.roles);
+            sessionStorage.setItem("token", token);
+            sessionStorage.setItem("role", decoded.roles);
 
             return response.status;
         }

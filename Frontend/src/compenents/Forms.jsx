@@ -94,19 +94,33 @@ const PassengerForm = () => {
             user_role: "ROLE_PASSENGER"
         }
 
-        // console.log(registerData);
-
-        RegisterNewPassenger(registerData).then((status) => {
+        createItem("passenger", FormData).then((status) => {
             if (status === 201) {
-                toast.success("Credential created successfully!");
-                setRegistered(true);
+                resetTheForm();
+            } else if (status === 302) {
+                toast.error("Passenger ID/Email/Mobile already exist")
+            } else {
+                toast.error("Internal Error")
+                return;
             }
         });
 
+        // console.log(registerData);
+        RegisterNewPassenger(registerData).then((status) => {
+            if (status === 201) {
+                toast.success(`Welcome ${FormData.passenger_name}`);
+                resetTheForm();
+                Navigate("/");
+            } else {
+                toast.error("Internal Error")
+                return;
+            }
+        });
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         const isEmpty = Object.keys(FormData).some((key) => FormData[key] === "");
         if (isEmpty) {
             toast.error("All fields must be filled!");
@@ -146,17 +160,9 @@ const PassengerForm = () => {
         } else if (!isAgeValid) {
             toast.error("Enter a valid Age!");
             return;
+        } else {
+            setRegistered(!Registered);
         }
-
-        // console.log(FormData);
-
-        createItem("passenger", FormData).then((status) => {
-            if (status === 201) {
-                toast.success("Passenger added successfully!");
-                resetTheForm();
-                Navigate("/login");
-            }
-        });
 
     }
 
@@ -180,8 +186,8 @@ const PassengerForm = () => {
 
     return (
         <div className="formcontainer">
-            {!Registered && (<div className='formelements'>
-                <h2 className='form-title'>Passenger Credential</h2>
+            {Registered && (<div className='formelements'>
+                <h2 className='form-title'>Sign-up</h2>
                 <form ref={RefForm}>
                     <div className="formelements-field">
                         <label htmlFor="username">Username:</label>
@@ -204,8 +210,8 @@ const PassengerForm = () => {
                     </div>
                 </form>
             </div>)}
-            {Registered && (<div className="formelements">
-                <h2 className='form-title'>Passenger Signup</h2>
+            {!Registered && (<div className="formelements">
+                <h2 className='form-title'>Passenger details</h2>
                 <form ref={RefForm}>
                     <div className="formelements-field">
                         <label htmlFor="passenger_name">Name:</label>

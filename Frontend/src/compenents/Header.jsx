@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 const Header = () => {
     const Navigate = useNavigate();
 
-    const token = localStorage.getItem("token");
-    const role = localStorage.getItem("role");
+    const token = sessionStorage.getItem("token");
+    const role = sessionStorage.getItem("role");
 
     const handleLogout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("role");
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("role");
         Navigate("/");
     };
 

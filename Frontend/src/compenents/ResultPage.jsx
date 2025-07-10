@@ -1,26 +1,27 @@
-import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { toast } from 'sonner';
 import { format } from 'date-fns';
 import { jwtDecode } from "jwt-decode";
+import { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { toast } from 'sonner';
+import * as apihub from '../util/API_HUB';
 
-import available_seater from '../assets/icons/seater_available.svg'
-import available_sleeper from '../assets/icons/sl_available.svg'
-import available_female_seater from '../assets/icons/seater_fem.svg'
-import available_female_sleeper from '../assets/icons/sl_fem.svg'
-import available_male_seater from '../assets/icons/seater_male.svg'
-import available_male_sleeper from '../assets/icons/sl_male.svg'
-import selected_seater from '../assets/icons/seater_selected.svg'
-import selected_sleeper from '../assets/icons/sl_selected.svg'
-import selected_male_seater from '../assets/icons/seater_male_selected.svg'
-import selected_female_seater from '../assets/icons/seater_female_selected.svg'
-import selected_male_slepeer from '../assets/icons/sl_selected_male.svg'
-import selected_female_slepeer from '../assets/icons/sl_selected_female.svg'
-import blocked_female_seater from '../assets/icons/seat-fem-blocked.svg'
-import blocked_male_seater from '../assets/icons/seat-male-blocked.svg'
-import blocked_female_sleeper from '../assets/icons/pinkgreysleeper.png'
-import blocked_male_sleeper from '../assets/icons/bluegreysleeper.png'
+import blocked_male_sleeper from '../assets/icons/bluegreysleeper.png';
+import blocked_female_sleeper from '../assets/icons/pinkgreysleeper.png';
+import blocked_female_seater from '../assets/icons/seat-fem-blocked.svg';
+import blocked_male_seater from '../assets/icons/seat-male-blocked.svg';
+import available_seater from '../assets/icons/seater_available.svg';
+import available_female_seater from '../assets/icons/seater_fem.svg';
+import selected_female_seater from '../assets/icons/seater_female_selected.svg';
+import available_male_seater from '../assets/icons/seater_male.svg';
+import selected_male_seater from '../assets/icons/seater_male_selected.svg';
+import selected_seater from '../assets/icons/seater_selected.svg';
+import available_sleeper from '../assets/icons/sl_available.svg';
+import available_female_sleeper from '../assets/icons/sl_fem.svg';
+import available_male_sleeper from '../assets/icons/sl_male.svg';
+import selected_sleeper from '../assets/icons/sl_selected.svg';
+import selected_female_slepeer from '../assets/icons/sl_selected_female.svg';
+import selected_male_slepeer from '../assets/icons/sl_selected_male.svg';
 
 const ResultPage = () => {
 
@@ -39,7 +40,7 @@ const ResultPage = () => {
     const [BookingSchedule, setBookingSchedule] = useState([]);
     const Navigate = useNavigate();
 
-    let token = localStorage.getItem("token") || "";
+    let token = sessionStorage.getItem("token") || "";
     let passenger_id = "";
     if (token) {
         const decoded = jwtDecode(token);
@@ -58,41 +59,43 @@ const ResultPage = () => {
     }, [])
 
     const fetchData = async () => {
+
+
         try {
-            let scheduleres = await axios.get(`http://localhost:3000/bookinginfo`, {
-                headers: {
-                    "Content-type": "Application/json",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
-            })
-            let temparr = scheduleres.data;
-            let tempfilter = temparr.filter((element) => {
-                return element.routeInfo_id === routeInfo_id;
-            })
-            setBookingSchedule(tempfilter)
+            let scheduleres = await axios.get(`http://localhost:3000/bookinginfo/getroutes`,
+                {
+                    params: { routeInfoId: routeInfo_id, boardingDateTime: travelDate + "T00:00:00" },
+                    headers: {
+                        "Content-type": "Application/json",
+                        Authorization: `Bearer ${sessionStorage.getItem("token")}`
+                    }
+                })
+            setBookingSchedule(scheduleres.data);
 
+            apihub.listItem("bus").then(data => setBusDetails(data))
+            apihub.listItem("busbookinginfo").then(data => setBusLogs(data))
 
-            let busres = await axios.get(`http://localhost:3000/bus`, {
-                headers: {
-                    "Content-type": "Application/json",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
-            })
-            setBusDetails(busres.data);
+            // let busres = await axios.get(`http://localhost:3000/bus`, {
+            //     headers: {
+            //         "Content-type": "Application/json",
+            //         Authorization: `Bearer ${sessionStorage.getItem("token")}`
+            //     }
+            // })
+            // setBusDetails(busres.data);
 
-            let buslogres = await axios.get(`http://localhost:3000/busbookinginfo`, {
-                headers: {
-                    "Content-type": "Application/json",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
-            })
-            setBusLogs(buslogres.data)
+            // let buslogres = await axios.get(`http://localhost:3000/busbookinginfo`, {
+            //     headers: {
+            //         "Content-type": "Application/json",
+            //         Authorization: `Bearer ${sessionStorage.getItem("token")}`
+            //     }
+            // })
+            // setBusLogs(buslogres.data)
 
             if (passenger_id) {
                 let passengerres = await axios.get(`http://localhost:3000/passenger/id/${passenger_id}`, {
                     headers: {
                         "Content-type": "Application/json",
-                        Authorization: `Bearer ${localStorage.getItem("token")}`
+                        Authorization: `Bearer ${sessionStorage.getItem("token")}`
                     }
                 })
                 setPassenger(passengerres.data)
@@ -758,14 +761,14 @@ const ResultPage = () => {
             let blockseatres = await axios.post("http://localhost:3000/busbookinginfo/add/all", busStorage, {
                 headers: {
                     "Content-type": "Application/json",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                    Authorization: `Bearer ${sessionStorage.getItem("token")}`
                 }
             })
 
             let passres = await axios.post("http://localhost:3000/passengerbookingInfo/add/all", passengerStorage, {
                 headers: {
                     "Content-type": "Application/json",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                    Authorization: `Bearer ${sessionStorage.getItem("token")}`
                 }
             })
 
@@ -782,8 +785,8 @@ const ResultPage = () => {
             console.log("Block seat & book ticket for passenger:", error);
             // if (error.response && error.response.status === 401) {
             //     alert("Session expired. Please log in again.");
-            //     localStorage.removeItem("role");  // Remove invalid token
-            //     localStorage.removeItem("token");  // Remove invalid token
+            //     sessionStorage.removeItem("role");  // Remove invalid token
+            //     sessionStorage.removeItem("token");  // Remove invalid token
             //     window.location.href = "/login";  // Redirect to login page
             // } else {
             //     console.error("API Error:", error);
@@ -881,7 +884,10 @@ const ResultPage = () => {
                 </div>
             </div>
             <div className="resultpage-results">
-                {MyArr}
+                {MyArr != 0 ? MyArr : (
+                    <div className='errorDiv'>
+                        <h1 className='errorMassage'>No bus available for {fromCity} to {toCity}</h1>
+                    </div>)}
             </div>
             {Show && (<div className="viewseats" id='viewseats'>
                 <div className='viewseats-title'>

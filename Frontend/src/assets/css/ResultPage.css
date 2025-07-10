@@ -300,3 +300,11 @@
     margin: 10px;
     padding: 10px;
 }
+
+.errorDiv {
+    width: 80dvw;
+    height: 30dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

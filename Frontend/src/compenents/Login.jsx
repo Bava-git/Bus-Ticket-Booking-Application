@@ -28,11 +28,11 @@ const Login = () => {
             })
             if (response.status === 200) {
                 const token = await response.data.token;
-                localStorage.setItem("token", token);
+                sessionStorage.setItem("token", token);
 
                 const decoded = jwtDecode(token);
                 let role = decoded.roles;
-                localStorage.setItem("role", role);
+                sessionStorage.setItem("role", role);
                 Navigate("/");
                 toast.success("Welcome Traveller");
             }

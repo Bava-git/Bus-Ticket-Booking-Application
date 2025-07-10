@@ -2,7 +2,7 @@ import './App.css'
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { Toaster } from 'sonner';
 
-let role = localStorage.getItem("role") || "";
+let role = sessionStorage.getItem("role") || "";
 
 //Modules
 import Header from './compenents/Header'
