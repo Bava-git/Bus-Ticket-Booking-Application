@@ -1,10 +1,36 @@
-import { toast } from 'sonner';
-import baseAPI from '../util/api'
 import axios from 'axios';
 import { jwtDecode } from "jwt-decode";
 
+const baseAPI = axios.create({
+    baseURL: "http://localhost:3000", // Change to your backend URL
+    headers: { "Content-Type": "application/json" },
+});
+
+// Request interceptor: Automatically add token
+baseAPI.interceptors.request.use((config) => {
+    const token = sessionStorage.getItem("token");
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+});
+
+// Add a response interceptor to catch expired tokens globally
+baseAPI.interceptors.response.use(
+    response => response,
+    error => {
+        if (error.response && error.response.status === 401) {
+            alert("Session expired. Please log in again.");
+            sessionStorage.removeItem("token");  // Clear token
+            sessionStorage.removeItem("role");  // Clear token
+            window.location.href = "/login";  // Redirect user to login page
+        }
+        return Promise.reject(error);
+    }
+);
+
 // -----------------------------------------------------------------------[Register API]
-const RegisterNewPassenger = async (NewPassengerData) => {
+export const RegisterNewPassenger = async (NewPassengerData) => {
     try {
         const response = await axios.post(`http://localhost:3000/user/register`, NewPassengerData, {
             headers: {
@@ -27,7 +53,7 @@ const RegisterNewPassenger = async (NewPassengerData) => {
 };
 
 // -----------------------------------------------------------------------[Create API]
-const createItem = async (ItemURL, NewItemData) => {
+export const createItem = async (ItemURL, NewItemData) => {
     try {
         const response = await baseAPI.post(`/${ItemURL}/add`, NewItemData);
         return response.status;
@@ -37,7 +63,7 @@ const createItem = async (ItemURL, NewItemData) => {
 };
 
 // -----------------------------------------------------------------------[List API]
-const listItem = async (ItemURL) => {
+export const listItem = async (ItemURL) => {
     try {
 
         const response = await baseAPI.get(`/${ItemURL}`);
@@ -51,7 +77,7 @@ const listItem = async (ItemURL) => {
 };
 
 // -----------------------------------------------------------------------[Delete API]
-const deleteItem = async (ItemURL, id) => {
+export const deleteItem = async (ItemURL, id) => {
     try {
 
         const response = await baseAPI.delete(`/${ItemURL}/delete/${id}`);
@@ -63,7 +89,7 @@ const deleteItem = async (ItemURL, id) => {
 };
 
 // -----------------------------------------------------------------------[Get data of an item API]
-const GetItemById = async (ItemURL, id) => {
+export const GetItemById = async (ItemURL, id) => {
     try {
 
         const response = await baseAPI.get(`/${ItemURL}/id/${id}`);
@@ -77,7 +103,7 @@ const GetItemById = async (ItemURL, id) => {
 };
 
 // -----------------------------------------------------------------------[Update API]
-const updateItem = async (ItemURL, id, updateData) => {
+export const updateItem = async (ItemURL, id, updateData) => {
 
     try {
 
@@ -88,7 +114,3 @@ const updateItem = async (ItemURL, id, updateData) => {
         console.log("Passenger Update " + error);
     }
 };
-
-// -----------------------------------------------------------------------[Export All API's]
-
-export { listItem, createItem, deleteItem, GetItemById, updateItem, RegisterNewPassenger };

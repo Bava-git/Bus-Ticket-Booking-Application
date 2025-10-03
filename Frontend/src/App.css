@@ -26,29 +26,37 @@ body {
     font-size: 20px;
 }
 
-.header-bns {
-    padding: 5px;
-    margin: 0 10px;
-    border-radius: 5px;
-    cursor: pointer;
-
-    &:hover {
-        background-color: lightpink;
-    }
-}
-
-.registerBn {
-    margin-right: 30px;
-}
-
 .logo {
     cursor: pointer;
     width: 50px;
     height: 50px;
 }
 
-/* Temp --------------------------------------------------------------------------------- */
+.header-afterLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-.templinks a {
-    margin: 10px;
+/* UserIcon --------------------------------------------------------------------------------- */
+
+.userprofileBn {
+    background-color: transparent;
+    border: 0;
+    z-index: 1000;
+}
+
+.userprofilelogo {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    margin: 0 2em;
+}
+
+/* ADMINIcon --------------------------------------------------------------------------------- */
+
+.adminBN {
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
 }

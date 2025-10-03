@@ -1,6 +1,5 @@
 .homepageimage {
     width: 100%;
-    position: relative;
 }
 
 .searchbarcontainer {
@@ -19,7 +18,6 @@
 }
 
 .searchbar {
-    /* border: 2px solid rgba(224, 255, 255, 0.6); */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -99,6 +97,10 @@
     position: absolute;
     top: 120px;
     background-color: #E1EBEE;
+
+    &:hover {
+        background-color: #81a1ab;
+    }
 }
 
 

@@ -5,29 +5,29 @@ import { Toaster } from 'sonner';
 let role = sessionStorage.getItem("role") || "";
 
 //Modules
-import Header from './compenents/Header'
-import { PassengerForm, RouteForm, BusForm, BookingForm } from './compenents/Forms'
-import { ListPassenger, ListBus, ListRoute, ListBookingInfo } from './compenents/List'
-import HomePage from './compenents/HomePage'
-import Login from './compenents/Login'
-import ResultPage from './compenents/ResultPage'
-import { Profile, ChangePassword } from './compenents/Profile'
-import PrivateComponents from "./compenents/PrivateComponents";
-import { History } from "./compenents/History";
+import Header from './components/Header';
+import { PassengerForm, RouteForm, BusForm, BookingForm } from './components/Forms';
+import { ListPassenger, ListBus, ListRoute, ListBookingInfo } from './components/List';
+import HomePage from './components/HomePage';
+import Login from './components/Login';
+import ResultPage from './components/ResultPage';
+import { Profile, ChangePassword } from './components/Profile';
+import PrivateComponents from "./components/PrivateComponents";
+import { History } from "./components/History";
 
 
 //CSS
-import './assets/css/Form.css'
-import './assets/css/List.css'
-import './assets/css/HomePage.css'
-import './assets/css/ResultPage.css'
-import './assets/css/Login.css'
+import './assets/css/Form.css';
+import './assets/css/List.css';
+import './assets/css/HomePage.css';
+import './assets/css/ResultPage.css';
+import './assets/css/Login.css';
 
 function App() {
 
   return (
     <>
-      <Toaster expand={true} richColors position='top-right' closeButton />
+      <Toaster expand={true} richColors position='top-right' duration={2000} />
       <BrowserRouter>
         <Header />
         <Routes>

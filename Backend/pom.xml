@@ -8,11 +8,11 @@
         <version>3.4.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.capstoneproject</groupId>
-    <artifactId>Green-Bus</artifactId>
+    <groupId>com.bluebus</groupId>
+    <artifactId>Blue-Bus</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Green-Bus</name>
-    <description>This is Capstone Project for Java full stack course</description>
+    <name>Blue-Bus</name>
+    <description>This project helps to book bus tickets online quicker, women friendly</description>
     <url/>
     <licenses>
         <license/>
