@@ -1,10 +1,7 @@
 package com.bluebus.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -14,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -44,17 +42,6 @@ public class PassengerBookingInfo {
     @JsonProperty("passenger_id")
     private String passengerId;
 
-    @Column(name = "passenger_name")
-    @JsonProperty("passenger_name")
-    @NotBlank
-    @Size(min = 3, max = 30)
-    private String passengerName;
-
-    @Column(name = "passenger_gender")
-    @JsonProperty("passenger_gender")
-    @NotBlank
-    private String passengerGender;
-
     @Column(name = "seat_num")
     @JsonProperty("seat_num")
     private String seatNum;
@@ -63,14 +50,4 @@ public class PassengerBookingInfo {
     @JsonProperty("paymentType")
     private String paymentType;
 
-    @Column(name = "passenger_mobile")
-    @JsonProperty("passenger_mobile")
-    @NotBlank
-    private String passengerMobile;
-
-    @Column(name = "passenger_email")
-    @JsonProperty("passenger_email")
-    @NotBlank
-    @Email
-    private String passengerEmail;
 }

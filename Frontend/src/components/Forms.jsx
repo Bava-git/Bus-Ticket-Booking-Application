@@ -4,7 +4,7 @@ import { toast } from 'sonner';
 import { createItem, GetItemById, listItem, RegisterNewPassenger, updateItem } from '../util/API_HUB';
 import loginImage from '../assets/image/login-page.jpg';
 
-const PassengerForm = () => {
+export const PassengerForm = () => {
 
     const Navigate = useNavigate();
     const [searchParams] = useSearchParams();
@@ -272,7 +272,7 @@ const PassengerForm = () => {
 }
 
 
-const RouteForm = () => {
+export const RouteForm = () => {
 
     const Navigate = useNavigate();
     const [searchParams] = useSearchParams();
@@ -405,7 +405,7 @@ const RouteForm = () => {
     )
 }
 
-const BusForm = () => {
+export const BusForm = () => {
 
     const Navigate = useNavigate();
     const [searchParams] = useSearchParams();
@@ -723,7 +723,7 @@ const BusForm = () => {
     )
 }
 
-const BookingForm = () => {
+export const BookingForm = () => {
 
     const RefForm = useRef(null);
     const [FormData, setFormData] = useState({
@@ -934,7 +934,3 @@ const BookingForm = () => {
         </div >
     )
 }
-
-
-export { BookingForm, BusForm, PassengerForm, RouteForm };
-

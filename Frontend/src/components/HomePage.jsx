@@ -92,11 +92,9 @@ const HomePage = () => {
                             </datalist>
                         </div>
                     </div>
-                    <div className='searchbar-field'>
-                        <div>
-                            <input type="date" placeholder='To' className='searchbar-inputbox' id='date' value={whichDate}
-                                onChange={(e) => setwhichDate(e.target.value)} />
-                        </div>
+                    <div className='searchbar-field search-date'>
+                        <input type="date" placeholder='To' className='searchbar-inputbox' id='date' value={whichDate}
+                            onChange={(e) => setwhichDate(e.target.value)} />
                     </div>
                     <div className='searchbar-field-female'>
                         <div className='searchbar-female'>

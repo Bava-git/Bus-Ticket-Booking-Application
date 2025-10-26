@@ -8,6 +8,12 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+img {
+    pointer-events: auto;
+    -webkit-user-drag: none;
+}
+
+
 /* Header --------------------------------------------------------------------------------- */
 
 .header-container {
@@ -59,4 +65,19 @@ body {
     cursor: pointer;
     background-color: transparent;
     border: 0;
+}
+
+/* LoadingScreen --------------------------------------------------------------------------------- */
+
+.loadingScreenDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70dvh;
+    border: 1px solid #2563eb;
+    border-radius: 2em;
+}
+
+.loadingScreenDiv h1 {
+    color: #1e3a8a;
 }

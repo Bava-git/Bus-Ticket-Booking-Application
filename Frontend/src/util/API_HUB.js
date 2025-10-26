@@ -19,7 +19,7 @@ baseAPI.interceptors.request.use((config) => {
 baseAPI.interceptors.response.use(
     response => response,
     error => {
-        if (error.response && error.response.status === 401) {
+        if (error.response && (error.response.status === 401 || error.response.status === 403)) {
             alert("Session expired. Please log in again.");
             sessionStorage.removeItem("token");  // Clear token
             sessionStorage.removeItem("role");  // Clear token
@@ -108,6 +108,19 @@ export const updateItem = async (ItemURL, id, updateData) => {
     try {
 
         let response = await baseAPI.put(`/${ItemURL}/update/${id}`, updateData);
+        return response.status;
+
+    } catch (error) {
+        console.log("Passenger Update " + error);
+    }
+};
+
+// -----------------------------------------------------------------------[Update API]
+export const saveAllItem = async (ItemURL, allData) => {
+
+    try {
+
+        let response = await baseAPI.post(`/${ItemURL}`, allData);
         return response.status;
 
     } catch (error) {

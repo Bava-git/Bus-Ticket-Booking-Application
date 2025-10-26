@@ -1,5 +1,6 @@
 package com.bluebus.controller;
 
+import com.bluebus.dto.ResTicketDwld;
 import com.bluebus.entity.PassengerBookingInfo;
 import com.bluebus.service.PassengerBookingInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class PassengerBookingInfoController {
     @Autowired
     private PassengerBookingInfoService passengerBookInfoSer;
 
+
     @GetMapping
     public List<PassengerBookingInfo> listPBIR() {
         return passengerBookInfoSer.listPBIR();
@@ -30,18 +32,52 @@ public class PassengerBookingInfoController {
         if (passengerBookingInfo != null) {
             return ResponseEntity.ok(passengerBookingInfo); // 200 OK
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("PassengerBookingInfo not found, " + passengerBookingInfoId); // 404 NOT_FOUND
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body("PassengerBookingInfo not found, " + passengerBookingInfoId); // 404 NOT_FOUND
         }
     }
 
     @GetMapping("/pid/{passengerId}")
     public ResponseEntity<?> findByPassengerId(@PathVariable String passengerId) {
-        List<PassengerBookingInfo> passengerBookingInfo = passengerBookInfoSer.findByPassengerId(passengerId);
+
+        List<PassengerBookingInfo> passengerBookingInfo =
+                passengerBookInfoSer.findByPassengerId(passengerId);
+
         if (passengerBookingInfo != null) {
             return ResponseEntity.ok(passengerBookingInfo); // 200 OK
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("PassengerBookingInfo not found, " + passengerId); // 404 NOT_FOUND
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body("PassengerBookingInfo not found, " + passengerId); // 404 NOT_FOUND
         }
+    }
+
+    @GetMapping("/prnid/{pnrNumber}")
+    public ResponseEntity<?> findByPnrNumber(@PathVariable String pnrNumber) {
+
+        List<PassengerBookingInfo> passengerBookingInfo =
+                passengerBookInfoSer.findByPnrNumber(pnrNumber);
+
+        if (passengerBookingInfo != null) {
+            return ResponseEntity.ok(passengerBookingInfo); // 200 OK
+        } else {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body("PassengerBookingInfo not found, " + pnrNumber); // 404 NOT_FOUND
+        }
+    }
+
+    @GetMapping("/print/{pnrNumber}")
+    public ResponseEntity<?> getByPassengerBookingInfoId(@PathVariable String pnrNumber) {
+
+        if (!pnrNumber.isEmpty()) {
+            ResTicketDwld resTicketDwld = passengerBookInfoSer.getByPassengerBookingInfoId(pnrNumber);
+            return ResponseEntity.ok(resTicketDwld); // 200 OK
+        }
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body("PassengerBookingInfo not found, " + pnrNumber); // 404 NOT_FOUND
     }
 
     @PostMapping("/add")
@@ -74,7 +110,7 @@ public class PassengerBookingInfoController {
         }
 
         List<PassengerBookingInfo> pass = passengerBookInfoSer.multiplePBIRcreate(passengerBookingInfo);
-        if (pass != null) {
+        if (!pass.isEmpty()) {
             return ResponseEntity.status(HttpStatus.CREATED).body(pass);
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);

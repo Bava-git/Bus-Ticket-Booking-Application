@@ -9,12 +9,13 @@
     left: 2dvw;
     border-radius: 60px;
     background-color: rgba(224, 255, 255, 0.6);
-    box-shadow: 0px 5px 10px 0px black;
+    box-shadow: 0px 3px 5px 0px black;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: max-content;
+    width: 85%;
+    transition: all 0.5s ease-in-out;
 }
 
 .searchbar {
@@ -22,42 +23,43 @@
     justify-content: space-between;
     align-items: center;
     width: 95%;
-    padding: 10px;
-    margin: 10px;
+    padding: 0.5em;
+    margin: 0.5em;
 }
 
-.searchbar-icons {
-    width: 40px;
-    height: 40px;
-    margin: 10px;
-}
-
+.searchbar-icons,
 .searchbar-searchicons {
-    width: 30px;
-    height: 30px;
-    margin: 10px;
+    width: 2em;
+    height: 2em;
+    margin: 0.5em;
 }
+
 
 .searchbar-field {
     display: flex;
     margin-left: 20px;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 5px 10px 0px black;
-    padding: 10px;
-    margin: 10px;
     border-radius: 20px;
-    height: 60px;
+    padding: 0.5em;
+    margin: 0.5em;
+    height: 7dvh;
+    width: 70%;
+    border: 1px solid black;
 }
 
 .searchbar-inputbox {
-    width: 200px;
-    height: 50px;
-    font-size: 20px;
+    height: 1.5em;
+    width: 80%;
+    font-size: 1.2em;
     background-color: rgba(224, 255, 255, 0.6);
     border: 0;
     border-radius: 20px;
-    padding: 0 10px;
+    padding: 0 1em;
+}
+
+.search-date {
+    width: max-content;
 }
 
 .searchbar-female {
@@ -72,10 +74,10 @@
 
 .searchbar-field-female {
     display: flex;
-    box-shadow: 0px 5px 10px 0px black;
     padding: 10px;
     margin: 10px;
     border-radius: 20px;
+    border: 1px solid black;
 }
 
 .searchbar-field-femaletitle {
@@ -101,6 +103,34 @@
     &:hover {
         background-color: #81a1ab;
     }
+}
+
+@media (max-width: 1024px) {
+    .searchbar {
+        flex-direction: column;
+        transition: flex-direction 0.5s ease-in-out;
+    }
+
+    .searchbarcontainer {
+        height: 60dvh;
+        top: 20dvh;
+    }
+
+    .search-date {
+        width: 70%;
+        height: 3em;
+    }
+
+    .searchbar-field-search {
+        top: 360px;
+    }
+
+    .searchbar-field {
+        width: 90%;
+        display: flex;
+        justify-content: space-around;
+    }
+
 }
 
 

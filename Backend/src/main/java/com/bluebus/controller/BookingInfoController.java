@@ -1,7 +1,7 @@
 package com.bluebus.controller;
 
-import com.bluebus.entity.BusSchedule;
-import com.bluebus.service.BusScheduleService;
+import com.bluebus.entity.BookingInfo;
+import com.bluebus.service.BookingInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,19 +15,19 @@ import java.util.Map;
 @RestController
 @RequestMapping("/bookinginfo")
 @CrossOrigin("http://localhost:3000")
-public class BusScheduleController {
+public class BookingInfoController {
 
     @Autowired
-    private BusScheduleService busScheduleService;
+    private BookingInfoService busScheduleService;
 
     @GetMapping
-    public List<BusSchedule> listPBIR() {
+    public List<BookingInfo> listPBIR() {
         return busScheduleService.listPBIR();
     }
 
     @GetMapping("/id/{bookingInfoId}")
     public ResponseEntity<?> findByBookingInfoId(@PathVariable String bookingInfoId) {
-        BusSchedule bookingInfo = busScheduleService.findByBookingInfoId(bookingInfoId);
+        BookingInfo bookingInfo = busScheduleService.findByBookingInfoId(bookingInfoId);
         if (bookingInfo != null) {
             return ResponseEntity.ok(bookingInfo); // 200 OK
         } else {
@@ -37,7 +37,7 @@ public class BusScheduleController {
 
     @GetMapping("/bus/{busId}")
     public ResponseEntity<?> findByBusId(@PathVariable String busId) {
-        List<BusSchedule> bookingInfoList = busScheduleService.findByBusId(busId);
+        List<BookingInfo> bookingInfoList = busScheduleService.findByBusId(busId);
         if (bookingInfoList != null && !bookingInfoList.isEmpty()) {
             return ResponseEntity.ok(bookingInfoList); // 200 OK
         } else {
@@ -48,7 +48,7 @@ public class BusScheduleController {
 
     @GetMapping("/route/{routeInfoId}")
     public ResponseEntity<?> findByRouteInfoId(@PathVariable String routeInfoId) {
-        List<BusSchedule> bookingInfoList = busScheduleService.findByRouteInfoId(routeInfoId);
+        List<BookingInfo> bookingInfoList = busScheduleService.findByRouteInfoId(routeInfoId);
         if (bookingInfoList != null && !bookingInfoList.isEmpty()) {
             return ResponseEntity.ok(bookingInfoList); // 200 OK
         } else {
@@ -58,14 +58,14 @@ public class BusScheduleController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> createBIR(@RequestBody BusSchedule bookingInfo) {
+    public ResponseEntity<?> createBIR(@RequestBody BookingInfo bookingInfo) {
 
-        BusSchedule isExist = busScheduleService.findByBookingInfoId(bookingInfo.getBookingInfoId());
+        BookingInfo isExist = busScheduleService.findByBookingInfoId(bookingInfo.getBookingInfoId());
         if (isExist != null) {
             return ResponseEntity.status(HttpStatus.FOUND).body("ID already exist " + bookingInfo.getBookingInfoId());
         }
 
-        BusSchedule bir = busScheduleService.createBIR(bookingInfo);
+        BookingInfo bir = busScheduleService.createBIR(bookingInfo);
         if (bir != null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(bir);
         }
@@ -86,7 +86,7 @@ public class BusScheduleController {
     @GetMapping("/getroutes")
     public ResponseEntity<?> findByRouteInfoIdandboardingDateTime(
             @RequestParam String routeInfoId, @RequestParam LocalDateTime boardingDateTime) {
-        List<BusSchedule> busScheduleList = busScheduleService.findByRouteInfoIdandboardingDateTime(
+        List<BookingInfo> busScheduleList = busScheduleService.findByRouteInfoIdandboardingDateTime(
                 routeInfoId, boardingDateTime);
         if (busScheduleList != null) {
             return ResponseEntity.ok(busScheduleList); // 200 OK

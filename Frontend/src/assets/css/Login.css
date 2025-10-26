@@ -59,15 +59,6 @@
     cursor: pointer;
 }
 
-.profilepage-seperator {
-    padding: 20px;
-    margin: 10px;
-    border-radius: 20px;
-    box-shadow: 0px 5px 10px 0px black;
-    text-align: center;
-    display: flex;
-}
-
 .profilecontainer {
     display: flex;
 }
@@ -99,37 +90,8 @@
     width: 100%;
 }
 
-.profilepage-field {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px 0px;
-    width: 400px;
-}
-
-.profilepage-data {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-}
-
-.downloadBN {
-    padding: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    position: relative;
-    left: 0;
-}
-
-.downloadBNDiv {
-    position: absolute;
-}
-
-.downloadBN:hover {
-    background-color: aqua;
-}
-
 .profilecontainer-title {
-    text-align: center;
+    text-align: start;
 }
 
 .errorMessage {

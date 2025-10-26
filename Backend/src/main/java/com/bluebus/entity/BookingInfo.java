@@ -1,10 +1,7 @@
 package com.bluebus.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,8 +16,8 @@ import java.time.LocalTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "busschedule")
-public class BusSchedule {
+@Table(name = "bookinginfo")
+public class BookingInfo {
 
     @Id
     @Column(name = "bookingInfo_id")
@@ -72,5 +69,6 @@ public class BusSchedule {
     @Column(name = "total_distance")
     @JsonProperty("total_distance")
     private int totalDistance;
+
 
 }

@@ -1,7 +1,7 @@
 package com.bluebus.service;
 
-import com.bluebus.entity.BusSchedule;
-import com.bluebus.repository.BusScheduleRepository;
+import com.bluebus.entity.BookingInfo;
+import com.bluebus.repository.BookingInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,28 +10,28 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class BusScheduleService {
+public class BookingInfoService {
 
     @Autowired
-    private BusScheduleRepository bookingInfoRepository;
+    private BookingInfoRepository bookingInfoRepository;
 
-    public List<BusSchedule> listPBIR() {
+    public List<BookingInfo> listPBIR() {
         return bookingInfoRepository.findAll();
     }
 
-    public BusSchedule findByBookingInfoId(String bookingInfoId) {
+    public BookingInfo findByBookingInfoId(String bookingInfoId) {
         return bookingInfoRepository.findByBookingInfoId(bookingInfoId);
     }
 
-    public List<BusSchedule> findByBusId(String busId) {
+    public List<BookingInfo> findByBusId(String busId) {
         return bookingInfoRepository.findByBusId(busId);
     }
 
-    public List<BusSchedule> findByRouteInfoId(String routeInfoId) {
+    public List<BookingInfo> findByRouteInfoId(String routeInfoId) {
         return bookingInfoRepository.findByRouteInfoId(routeInfoId);
     }
 
-    public BusSchedule createBIR(BusSchedule bookingInfo) {
+    public BookingInfo createBIR(BookingInfo bookingInfo) {
         return bookingInfoRepository.save(bookingInfo);
     }
 
@@ -43,9 +43,9 @@ public class BusScheduleService {
         return bookingInfoRepository.deleteAllByBusId(busId);
     }
 
-    public List<BusSchedule> findByRouteInfoIdandboardingDateTime(String routeInfoId, LocalDateTime boardingDateTime) {
-        List<BusSchedule> busScheduleList = bookingInfoRepository.findAll();
-        List<BusSchedule> filteredBusScheduleList = busScheduleList.stream().filter(item -> (
+    public List<BookingInfo> findByRouteInfoIdandboardingDateTime(String routeInfoId, LocalDateTime boardingDateTime) {
+        List<BookingInfo> busScheduleList = bookingInfoRepository.findAll();
+        List<BookingInfo> filteredBusScheduleList = busScheduleList.stream().filter(item -> (
                 item.getRouteInfoId().equals(routeInfoId)
 //                        && item.getBoardingDateTime().equals(boardingDateTime)
                         && item.getBoardingDateTime().toLocalDate().equals(boardingDateTime.toLocalDate())

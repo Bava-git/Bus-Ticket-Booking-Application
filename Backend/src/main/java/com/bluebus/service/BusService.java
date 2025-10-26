@@ -16,7 +16,7 @@ public class BusService {
     @Autowired
     private BlockedSeatsRepository busBookingInfoRepository;
     @Autowired
-    private BusScheduleService bookingInfoService;
+    private BookingInfoService bookingInfoService;
 
     public List<Bus> listBus() {
         return busRepository.findAll();

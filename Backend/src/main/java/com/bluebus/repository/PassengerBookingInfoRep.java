@@ -12,6 +12,8 @@ public interface PassengerBookingInfoRep extends JpaRepository<PassengerBookingI
 
     List<PassengerBookingInfo> findByPassengerId(String passengerId);
 
+    List<PassengerBookingInfo> findByPnrNumber(String pnrNumber);
+
     int deleteByPassengerBookingInfoId(String passengerBookingInfoId);
 
     int deleteAllByPassengerId(String passengerId);

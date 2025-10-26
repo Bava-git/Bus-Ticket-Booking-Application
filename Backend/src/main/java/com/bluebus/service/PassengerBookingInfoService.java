@@ -1,5 +1,7 @@
 package com.bluebus.service;
 
+import com.bluebus.dto.ResTicketDwld;
+import com.bluebus.entity.Bus;
 import com.bluebus.entity.PassengerBookingInfo;
 import com.bluebus.repository.PassengerBookingInfoRep;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,12 @@ public class PassengerBookingInfoService {
 
     @Autowired
     private PassengerBookingInfoRep passengerBookInfoRep;
+    @Autowired
+    private PassengerService passengerService;
+    @Autowired
+    private BookingInfoService busScheduleService;
+    @Autowired
+    private BusService busService;
 
     public List<PassengerBookingInfo> multiplePBIRcreate(List<PassengerBookingInfo> passengerBookingInfo) {
         return passengerBookInfoRep.saveAll(passengerBookingInfo);
@@ -23,6 +31,31 @@ public class PassengerBookingInfoService {
 
     public List<PassengerBookingInfo> findByPassengerId(String passengerId) {
         return passengerBookInfoRep.findByPassengerId(passengerId);
+    }
+
+    public List<PassengerBookingInfo> findByPnrNumber(String pnrNumber) {
+        return passengerBookInfoRep.findByPnrNumber(pnrNumber);
+    }
+
+    public ResTicketDwld getByPassengerBookingInfoId(String pnrNumber) {
+
+        if (!pnrNumber.isEmpty()) {
+            ResTicketDwld resTicketDwld = new ResTicketDwld();
+            resTicketDwld.setPassengerBookingInfo(passengerBookInfoRep.findByPnrNumber(pnrNumber));
+            resTicketDwld.setPassenger(passengerService.findByPassengerId(resTicketDwld.getPassengerBookingInfo().get(0).getPassengerId()));
+            resTicketDwld.setBusSchedule(busScheduleService.findByBookingInfoId(resTicketDwld.getPassengerBookingInfo().get(0).getBookingInfoId()));
+
+            Bus bus = new Bus();
+            bus = busService.findByBusId(resTicketDwld.getBusSchedule().getBusId());
+            switch (resTicketDwld.getPassengerBookingInfo().get(0).getSeatNum().substring(0, 2)) {
+                case "LL" -> resTicketDwld.setBusSeatType(bus.getLowerLeft());
+                case "LR" -> resTicketDwld.setBusSeatType(bus.getLowerRight());
+                case "UL", "UR" -> resTicketDwld.setBusSeatType("Sleeper");
+                default -> resTicketDwld.setBusSeatType("Check with operator");
+            }
+            return resTicketDwld;
+        }
+        return null;
     }
 
     public PassengerBookingInfo findByPassengerBookingInfoId(String passengerBookingInfoId) {
@@ -40,14 +73,8 @@ public class PassengerBookingInfoService {
 
         if (ifExist != null) {
             ifExist.setPassengerBookingInfoId(UpdatepassengerBookingInfo.getPassengerBookingInfoId());
-            ifExist.setBookingInfoId(UpdatepassengerBookingInfo.getBookingInfoId());
-            ifExist.setPassengerEmail(UpdatepassengerBookingInfo.getPassengerEmail());
-            ifExist.setPassengerName(UpdatepassengerBookingInfo.getPassengerName());
-            ifExist.setPassengerMobile(UpdatepassengerBookingInfo.getPassengerMobile());
             ifExist.setSeatNum(UpdatepassengerBookingInfo.getSeatNum());
-            ifExist.setPassengerId(UpdatepassengerBookingInfo.getPassengerId());
             ifExist.setPaymentType(UpdatepassengerBookingInfo.getPaymentType());
-            ifExist.setPassengerGender(UpdatepassengerBookingInfo.getPassengerGender());
             ifExist.setBookingDateTime(UpdatepassengerBookingInfo.getBookingDateTime());
             ifExist.setPnrNumber(UpdatepassengerBookingInfo.getPnrNumber());
             return passengerBookInfoRep.save(UpdatepassengerBookingInfo);

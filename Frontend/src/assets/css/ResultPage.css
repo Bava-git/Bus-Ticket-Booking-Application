@@ -1,9 +1,12 @@
+:root {
+    --viewseats-height: 80dvh;
+}
+
 .resultpage {
     display: flex;
     min-height: 100dvh;
-    margin-top: 50px;
+    flex-direction: column;
 }
-
 
 .resultpage-filter {
     border: 1px solid rgba(128, 128, 128, 0.5);
@@ -11,18 +14,70 @@
     padding: 10px;
     margin: 10px;
     height: max-content;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .filter-field {
     display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
     margin: 10px;
+    font-size: 0.8em;
+    border-radius: 1rem;
+    border: 1px solid rgb(128, 128, 128, 0.5);
 }
 
 .filter-field input {
-    margin: 0px 10px;
-    width: 15px;
+    margin: 0px 20px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+    user-select: none;
+}
+
+.filter-field input.CHARGINGPOINT {
+    margin: 0 2rem;
+}
+
+.filter-field input:checked~p {
+    background-color: lightblue;
+    border-radius: 1rem;
+    padding: 1.1rem 2.3rem;
+}
+
+.filter-field input.NON-AC:checked~p {
+    padding: 1.1rem 1.35rem;
+}
+
+.filter-field input.SEATER:checked~p {
+    padding: 1.1rem 1.7rem;
+}
+
+.filter-field input.SLEEPER:checked~p {
+    padding: 1.1rem 1.5rem;
+}
+
+.filter-field input.WATERBOTTLE:checked~p {
+    padding: 1.1rem 1rem;
+}
+
+.filter-field input.BLANKET:checked~p {
+    padding: 1.1rem 1.5rem;
+}
+
+.filter-field input.CHARGINGPOINT:checked~p {
+    padding: 1.1rem 1rem;
+}
+
+.filter-field p {
+    position: absolute;
+    user-select: none;
 }
 
 .resultpage-results {
@@ -37,8 +92,7 @@
     border-radius: 10px;
     padding: 20px;
     margin: 10px;
-    box-shadow: 0px 5px 10px 0px black;
-    width: 70vw;
+    box-shadow: 0px 0.5px 1px 1px gray;
 }
 
 .busdetails {
@@ -47,12 +101,12 @@
 }
 
 .busname {
-    font-size: 20px;
+    font-size: 1.3em;
 
 }
 
 .busamenities {
-    font-size: 15px;
+    font-size: 0.8em;
 }
 
 .busBnDiv {
@@ -84,7 +138,6 @@
     height: max-content;
     display: flex;
     flex-direction: column;
-    /* height: 49em; */
     justify-content: flex-end;
 }
 
@@ -147,7 +200,6 @@
 }
 
 .selector {
-    /* border: 1px solid black; */
     position: relative;
     display: inline-block;
     font-size: 17px;
@@ -191,15 +243,13 @@
 .viewseats {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 10dvh;
-    left: 2dvw;
     background-color: #E1EBEE;
     padding: 20px;
-    margin: 20px;
-    width: 90dvw;
     box-shadow: 0px 5px 10px 0px black;
     border-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    height: max-content;
 }
 
 .busdetails-payment {
@@ -207,7 +257,6 @@
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
-    width: 50%;
 }
 
 .busdetails-payment p {
@@ -236,6 +285,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 0.8em;
 }
 
 .othercontent-busdetails {
@@ -243,6 +293,45 @@
     border-radius: 10px;
     padding: 5px;
     margin-bottom: 25px;
+    width: 25rem;
+}
+
+.othercontent-field-paymenttype {
+    font-size: 0.8em;
+    display: flex;
+}
+
+.paymenttype {
+    border: 2px solid lightblue;
+    border-radius: 0.5em;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em;
+    width: max-content;
+    height: max-content;
+}
+
+.paymenttype input {
+    width: 30px;
+    height: 30px;
+    z-index: 2;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.paymenttype span {
+    position: absolute;
+}
+
+.paymenttype input:checked~span {
+    background-color: #85a5ff;
+    border: solid #3d44ff;
+    color: black;
+    margin: 0 1em;
+    padding: 1.3em 1.2em;
+    border-radius: 0.5em;
 }
 
 .bookticketBn {
@@ -286,12 +375,14 @@
 }
 
 .filter-title-clearbn {
-    border: 0;
+    border: 1px solid gray;
     background-color: transparent;
     cursor: pointer;
+    padding: 0 1em;
+    border-radius: 1em;
+    height: 3em;
 
     &:hover {
-        color: blue;
         background-color: #00BFFF;
     }
 }
@@ -307,4 +398,95 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* ---------------------------------------------------------------- */
+
+
+.bus-card {
+    padding: 1rem;
+    margin: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
+}
+
+.bus-info {
+    margin-bottom: 1rem;
+}
+
+.bus-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.bus-type {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4b5563;
+    margin-top: 0.25rem;
+}
+
+.price-info {
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.price-note {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 1.5rem;
+    font-size: 0.875rem;
+    margin-top: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    color: #374151;
+}
+
+.detail-item-icon {
+    aspect-ratio: 1/1;
+    width: 20px;
+    margin: 0.4em;
+}
+
+.button-container {
+    margin-top: 2rem;
+}
+
+.view-seats-button {
+    width: 100%;
+    background-color: #2563eb;
+    color: white;
+    font-weight: bold;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.view-seats-button:hover {
+    background-color: #1e4ed8;
+}
+
+.button-text {
+    margin-right: 0.5rem;
 }

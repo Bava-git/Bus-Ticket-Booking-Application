@@ -32,8 +32,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/user/register", "/user/login", "/passenger/add",
-                                "/routes", "/passenger/id/**", "/busbookinginfo", "/bus", "/bookinginfo", "bookinginfo/getroutes").permitAll()
-                        .requestMatchers("/passengerbookingInfo",
+                                "/routes", "/passenger/id/**", "/busbookinginfo", "/bus", "/bookinginfo", "/bookinginfo/getroutes").permitAll()
+                        .requestMatchers("/passengerbookingInfo", "/bookinginfo/id/**",
                                 "/busbookinginfo/add", "/passengerbookingInfo/add",
                                 "/busbookinginfo/add/all", "/passengerbookingInfo/add/all","/passenger/update/**").hasAnyAuthority("ROLE_PASSENGER", "ROLE_ADMIN")
                         .requestMatchers("/bookinginfo/**").hasAuthority("ROLE_ADMIN")
