@@ -263,7 +263,7 @@ export const PassengerForm = () => {
                     </div>
                     <div className="formelements-field">
                         <div></div>
-                        <button className='form-submitBn' onClick={(e) => { handleCredential(e) }}>Submit</button>
+                        <button className='button' onClick={(e) => { handleCredential(e) }}>Submit</button>
                     </div>
                 </form>
             </div>)}

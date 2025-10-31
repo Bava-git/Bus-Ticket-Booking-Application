@@ -129,3 +129,8 @@
     background-color: #009087;
     color: white;
 }
+
+.changePassBn {
+    width: max-content;
+    padding: 0 1em;
+}

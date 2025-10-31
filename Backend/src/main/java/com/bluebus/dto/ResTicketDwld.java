@@ -6,6 +6,7 @@ import com.bluebus.entity.PassengerBookingInfo;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Map;
 
 @Data
 public class ResTicketDwld {
@@ -13,6 +14,6 @@ public class ResTicketDwld {
     private Passenger passenger;
     private List<PassengerBookingInfo> passengerBookingInfo;
     private BookingInfo busSchedule;
-    private String busSeatType;
+    private List<BusSeatType> busSeatType;
 
 }

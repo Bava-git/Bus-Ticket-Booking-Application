@@ -51,8 +51,8 @@ const Profile = () => {
                     <p>{Passenger.passenger_email}</p>
                 </div>
                 <div className='profilepersonal-field'>
-                    <button className='button' onClick={() => { Navigate("/changepassword") }}>Change Password</button>
-                    <button className='button' onClick={() => { Navigate(`/passengerform?passenger_id=${passenger_id}`) }}>Update</button>
+                    <div></div>
+                    <button className='button changePassBn' onClick={() => { Navigate("/changepassword") }}>Change Password</button>
                 </div>
             </div>
         </div>

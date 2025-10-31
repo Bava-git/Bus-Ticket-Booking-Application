@@ -106,6 +106,9 @@
 .content-wrapper {
     max-width: 64rem;
     margin: 0 auto;
+    border: 1px solid grey;
+    padding: 2em;
+    border-radius: 1em;
 }
 
 .page-title {
@@ -149,8 +152,8 @@
 }
 
 .detail-item {
-    border-top: 1px solid #cbd5e1;
-    padding-top: 1rem;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 1rem;
 }
 
 .full-span {

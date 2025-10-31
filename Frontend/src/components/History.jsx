@@ -128,7 +128,7 @@ const History = () => {
                                 :
                                 (
                                     <tr>
-                                        <td colSpan={6} className="errorInTable">No booking yet</td>
+                                        <td colSpan={8} className="errorInTable">No booking yet</td>
                                     </tr>
                                 )
                         }
@@ -149,7 +149,7 @@ const DwldTicket = () => {
     const [BusSchedule, setBusSchedule] = useState({});
     const [Passenger, setPassenger] = useState({});
     const [PassengerBookingInfo, setPassengerBookingInfo] = useState({});
-    const [busSeatType, setbusSeatType] = useState('');
+    const [busSeatType, setbusSeatType] = useState([]);
 
     useEffect(() => {
 
@@ -270,18 +270,35 @@ const DwldTicket = () => {
                         </div>
                         <div className="card-body">
                             <h2 className="section-title">Seat Information</h2>
-                            <dl className="details-grid">
-                                <div className="detail-item">
-                                    <p className="label">Seat Number
-                                        <span className="value"> {Array.isArray(PassengerBookingInfo) ? PassengerBookingInfo?.map(item => item.seat_num).join(', ') : "Check with operator"}</span>
-                                    </p>
-                                </div>
-                                <div className="detail-item">
-                                    <p className="label">Seat Type
-                                        <span className="value"> {busSeatType || ""}</span>
-                                    </p>
-                                </div>
-                            </dl>
+                            {
+                                Array.isArray(busSeatType) ?
+                                    (busSeatType?.map((seat) => (
+                                        <dl className="details-grid" key={seat.seatNum}>
+                                            <div className="detail-item" >
+                                                <p className="label">Seat Number
+                                                    <span className="value"> {seat.seatNum}</span>
+                                                </p>
+                                            </div>
+                                            <div className="detail-item">
+                                                <p className="label">Seat Type
+                                                    <span className="value"> {seat.seatType}</span>
+                                                </p>
+                                            </div>
+                                        </dl>)))
+                                    :
+                                    (<dl className="details-grid">
+                                        <div className="detail-item">
+                                            <p className="label">Seat Number
+                                                <span className="value"> Check with operator</span>
+                                            </p>
+                                        </div>
+                                        <div className="detail-item">
+                                            <p className="label">Seat Type
+                                                <span className="value"> Check with operator</span>
+                                            </p>
+                                        </div>
+                                    </dl>)
+                            }
                         </div>
                         <div className="card-body">
                             <h2 className="section-title">Payment Details</h2>
