@@ -145,12 +145,6 @@
     gap: 1rem 1.5rem;
 }
 
-@media (min-width: 640px) {
-    .details-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 .detail-item {
     border-bottom: 1px solid #cbd5e1;
     padding-bottom: 1rem;

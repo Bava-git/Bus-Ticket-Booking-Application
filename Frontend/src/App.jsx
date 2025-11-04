@@ -1,29 +1,28 @@
-import './App.css'
-import React, { lazy, Suspense } from 'react';
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Toaster } from 'sonner';
 
 //Modules
+import { BookingForm, BusForm, PassengerForm, RouteForm } from './components/Forms';
 import Header from './components/Header';
-import { PassengerForm, RouteForm, BusForm, BookingForm } from './components/Forms';
-import { ListPassenger, ListBus, ListRoute, ListBookingInfo } from './components/List';
+import { DwldTicket, History } from "./components/History";
 import HomePage from './components/HomePage';
+import { ListBookingInfo, ListBus, ListPassenger, ListRoute } from './components/List';
 import Login from './components/Login';
-// import ResultPage from './components/ResultPage';
-const ResultPage = lazy(() => import('./components/ResultPage'));
-import { Profile, ChangePassword } from './components/Profile';
 import PrivateComponents from "./components/PrivateComponents";
-import { History, DwldTicket } from "./components/History";
+import { ChangePassword, Profile } from './components/Profile';
 import TestScreen from './test/TestScreen';
+const ResultPage = lazy(() => import('./components/ResultPage'));
 
 
 //CSS
+import './App.css';
 import './assets/css/Form.css';
-import './assets/css/List.css';
-import './assets/css/HomePage.css';
-import './assets/css/ResultPage.css';
-import './assets/css/Login.css';
 import './assets/css/History.css';
+import './assets/css/HomePage.css';
+import './assets/css/List.css';
+import './assets/css/Login.css';
+import './assets/css/ResultPage.css';
 
 function App() {
 

@@ -105,35 +105,6 @@
     }
 }
 
-@media (max-width: 1024px) {
-    .searchbar {
-        flex-direction: column;
-        transition: flex-direction 0.5s ease-in-out;
-    }
-
-    .searchbarcontainer {
-        height: 60dvh;
-        top: 20dvh;
-    }
-
-    .search-date {
-        width: 70%;
-        height: 3em;
-    }
-
-    .searchbar-field-search {
-        top: 360px;
-    }
-
-    .searchbar-field {
-        width: 90%;
-        display: flex;
-        justify-content: space-around;
-    }
-
-}
-
-
 /* ********************************************************** */
 .switch {
     font-size: 17px;
