@@ -24,7 +24,7 @@ public class BlockedSeatsController {
         return blockedSeatsService.listBBIR();
     }
 
-    @GetMapping("/id/{bookingInfoId}")
+    @GetMapping("/id/{busBookingInfoId}")
     public ResponseEntity<?> findByBusBookingInfoId(@PathVariable String busBookingInfoId) {
         BlockedSeats busBookingInfo = blockedSeatsService.findByBusBookingInfoId(busBookingInfoId);
         if (busBookingInfo != null) {

@@ -17,8 +17,8 @@ public class BlockedSeatsService {
         return bookingInfoRepository.findAll();
     }
 
-    public BlockedSeats findByBusBookingInfoId(String busId) {
-        return bookingInfoRepository.findByBusBookingInfoId(busId);
+    public BlockedSeats findByBusBookingInfoId(String busBookingInfoId) {
+        return bookingInfoRepository.findByBusBookingInfoId(busBookingInfoId);
     }
 
     public List<BlockedSeats> findByBusId(String busId) {

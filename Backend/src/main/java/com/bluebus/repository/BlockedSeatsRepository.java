@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface BlockedSeatsRepository extends JpaRepository<BlockedSeats, Long> {
 
-    BlockedSeats findByBusBookingInfoId(String busId);
+    BlockedSeats findByBusBookingInfoId(String busBookingInfoId);
 
     List<BlockedSeats> findByBusId(String busId);
 
