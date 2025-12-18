@@ -1,4 +1,4 @@
-# 🚍 Bus Ticket Booking Application Demo
+# 🚍 Bus Ticket Booking Application Demo [![Live Demo](https://img.shields.io/badge/Live_Demo-View_Project-indigo?style=for-the-badge&logo=react)](https://bluebusapplication.netlify.app/)
 
 Developed a bus ticket booking application with secure authentication, seat selection, gender-based seat allocation, sleeper/seater handling, and payment integration.
 
